@@ -1,0 +1,18 @@
+1. intro
+2. install applications (software-to-install.txt)
+3. JDK install
+4. First application "Hello World"
+
+hard skills:
+------------
+- running / compiling / bytecode
+- JVM / JRE / JDK differences
+- software architecture: input-process-output
+- data types: int/float/string/bool
+- data types sizes: bit / byte / 2 bytes / 4 bytes
+- entry point (public static void main(String... args))
+- flow: write -> compile -> run
+
+soft skills:
+------------
+- question asking (don't be shy to ask a question)

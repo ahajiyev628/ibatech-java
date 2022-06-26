@@ -1,0 +1,7 @@
+Code from classes:
+==================
+https://gitlab.com/dan-it/az-groups/az-be5 - Link to open in the browser
+https://gitlab.com/dan-it/az-groups/az-be5.git - Link to clone the project via git / Idea
+
+Homework & Step Projects:
+=========================
