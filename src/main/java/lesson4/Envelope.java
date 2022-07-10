@@ -4,7 +4,8 @@ public class Envelope {
 
   public static void main(String[] args) {
     int height = 8;
-    int width = 20;
+    int width = 22;
+    double k = (double) width / height;
 
     final int firstRow = 0;
     final int firstCol = 0;
@@ -16,7 +17,9 @@ public class Envelope {
         if (row == firstRow ||
             col == firstCol ||
             col == lastCol ||
-            row == lastRow)
+            row == lastRow ||
+            Math.round(row * k) == col
+        )
           System.out.print("*");
         else System.out.print(" ");
       }
