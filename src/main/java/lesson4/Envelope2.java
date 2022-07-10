@@ -1,10 +1,13 @@
 package lesson4;
 
-public class Envelope {
+public class Envelope2 {
 
   public static void main(String[] args) {
+    /** input data */
     int height = 8;
     int width = 22;
+
+    /** logic / process */
     double k = (double) width / height;
 
     final int firstRow = 0;
@@ -12,6 +15,7 @@ public class Envelope {
     final int lastRow = height - 1;
     final int lastCol = width - 1;
 
+    String result = "";
     for (int row = 0; row < height; row++) {
       for (int col = 0; col < width; col++) {
         if (row == firstRow ||                   // firstRow
@@ -21,11 +25,14 @@ public class Envelope {
             col == Math.round(row * k) ||        // diagonal 1
             col == lastCol - Math.round(row * k) // diagonal 2
         )
-          System.out.print("*");
-        else System.out.print(" ");
+          result = result + "*";
+        else result = result + " ";
       }
-      System.out.println();
+      result = result + "\n";
     }
+
+    /** output result */
+    System.out.println(result);
   }
 
 }
