@@ -14,11 +14,12 @@ public class Envelope {
 
     for (int row = 0; row < height; row++) {
       for (int col = 0; col < width; col++) {
-        if (row == firstRow ||
-            col == firstCol ||
-            col == lastCol ||
-            row == lastRow ||
-            Math.round(row * k) == col
+        if (row == firstRow ||                   // firstRow
+            col == firstCol ||                   // firstCol
+            col == lastCol ||                    // lastCol
+            row == lastRow ||                    // lastRow
+            col == Math.round(row * k) ||        // diagonal 1
+            col == lastCol - Math.round(row * k) // diagonal 2
         )
           System.out.print("*");
         else System.out.print(" ");
