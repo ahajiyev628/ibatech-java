@@ -21,18 +21,19 @@ public class AppleAndOranges {
     List<Integer> apples0, // apples distances
     List<Integer> oranges0 // oranges distances
   ) {
-    int[] apples = convertToArray(apples0);
-    int[] oranges = convertToArray(oranges0);
-    int ac = 0;
-    int oc = 0;
+    int ac = 0; // non-final
+    int oc = 0; // non-final
+    // everything else is final
+    final int[] apples = convertToArray(apples0);
+    final int[] oranges = convertToArray(oranges0);
     // count apples
     for (int i = 0; i < apples.length; i++) {
-      int pos = a + apples[i];
+      final int pos = a + apples[i];
       if (inTheRange(pos, s, t)) ac++;
     }
     // count oranges
     for (int orange: oranges) {
-      int pos = b + orange;
+      final int pos = b + orange;
       if (inTheRange(pos, s, t)) oc++;
     }
     System.out.println(ac);
