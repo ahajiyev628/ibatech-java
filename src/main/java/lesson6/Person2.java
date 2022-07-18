@@ -13,7 +13,18 @@ public class Person2 {
 
   public static void main(String[] args) {
     new Person2("Jim", "Bim");
+
     new Person2("Jim", "Bim",
+      new Person2("Marion", "Jim")
+    );
+
+    new Person2("Jim", "Bim",
+      new Person2("Sergio", "Jim"),
+      new Person2("Marion", "Jim")
+    );
+
+    new Person2("Jim", "Bim",
+      new Person2("Sergio", "Jim"),
       new Person2("Sergio", "Jim"),
       new Person2("Marion", "Jim")
     );

@@ -1,20 +1,5 @@
 package lesson6;
 
-class Pizza {
-  String name;
-  Integer size;
-
-  public Pizza(String n, Integer s) {
-    this.name = n;
-    this.size = s;
-  }
-
-  public void printMe() {
-    System.out.printf(
-      "Pizza name %s of size %d\n",
-      name, size);
-  }
-}
 
 public class PizzaApp {
 
