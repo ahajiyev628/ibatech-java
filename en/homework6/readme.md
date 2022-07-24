@@ -1,30 +1,45 @@
-# The 'Happy Family' mini-project keeps striking!
+# The "Happy Family" Mini-Project strikes again! (again)
 
 The idea of the project is to describe the structure of a family while taking into account that every human has relatives and the family members can change over time.
 
-# OOP in Java, OOP guidelines
-## The task
+# Object's life cycle. Garbage colector
+## The task:
 
-Improve the project using OOP
+Redefine the `finalize()` method. 
 
-#### Techincal requirements:
-- Make  `Pet` an abstract class .
-- Implement inheritance from the `Pet` class:
-  - create the `Fish`, `DomesticCat`, `Dog`, `RoboCat` (a cat robot) classes
-  - not all animals can do the same thing. Everybody eats the same way, everyone describes themselves differently, but not everybody does all the nasty things (a fish, for example, does not know about them at all). Therefore, leave the implementation of the `eat`  method in the abstract class, make the `respond` method abstract and implement `foul` into the interfaces of those hereditary classes, which can do that.
-- Add the corresponding enumerations in `Species`, also add the  `UNKNOWN` enumeration (for the animals, which kind is not known); make it so that at the initialisation of variables the corresponding kind was assigned to it automatically and in case of an unknown type - the type would be set to `UNKNOWN`.
-- Now the `Species` field is set at the object's initialization. Remove it from the `Pet` constructor.
-- Make sure all subclasses have superclass designers.
-- Implement inheritance from the `Human` class:
-  - create class inheritors of the `Human` class: `Man`, `Woman`; prohibit the inheritance of these classes.
-  - redefine the `Human`  `greetPet` method for each subclass (the text can be selected at your discretion).
-  - Describe each subclass's unique method of choice (e.g. `makeup` for women and `repairCar` for men).
+Improve the project: 
+ - implement animal species and timetables for extracurricular activities through the `enum` listings (use the views as you see fit, e.g. `CAT`, `DOG`, etc.)
+ - implement unit-tests for every custom project method that can be covered with tests
+
+#### Technical requirements:
+- Redefine the`finalize()` method in the `Family`, `Human`, `Pet` classes so that they would output a message about the removal of an object before the garbage collector deletes them,
+- Create the right amount of loops in the Main class of the `Human` object so that the garbage collector would start deleting old objects (from 10 thousand untill 10 million, depending on the amount of free ram)
+- Create the `enum` `Species` with a list of animal types; add the enumeration at your liking; refactor the `Pet` class - the animal type will changed from the `String` type to a `Species` type
+- Create `enum` `DayOfWeek` with a list of the days of the week (all 7 days); when you fill in the `Human` schedule (in the `main` method), use the `name()` enumeration method, which returns the string representation of the current enumeration.
+- Add the following methods, while keeping in mind that you may have both a positive and a negative scenario of the execution:
+- `toString` - check if the methods return a specific string for a specific object:
+  - `deleteChild(Human child)` - do 2 checks: 
+    - check if the child is actually being removed from the `children` array (if you pass an object that is equivalent to at least one element of the array);
+    - check if the `children` array remains unchanged (if you pass an object that is not equivalent to any array element)
+  - `deleteChild(int index)` - do 2 checks: 
+    - check that the child is actually being removed from the `children` array and the method returns the correct value;
+    - check that the `children` array remains unchanged (if you pass an index outside the index range) and the method returns the correct value;
+  - `addChild` - check that the  `children` array increases by one element and that this element is the passed object with all the necessary references;
+  - `countFamily` - check if the method returns the correct number of family members
+- Cover the further project changes with tests.
+
 
 #### Non-obligatory task with advanced complexity:
-- Create the `HumanCreator` interface and specify a `bornChild()` method, which creates a new instance of the `Human` class (child).
-- Implement the `HumanCreator` interface in one of the existing project classes. The implementation should return a new object `Man` or `Woman` with references to the current family, father's name, random name (you need to create a list of names in advance), and average IQ (from father and mother). The sex of the child is defined casually with the 50%/50% probability.
+- `enum` `Species` must include a constructor in which you can specify the amount of parameters for a pet.
+  - can the animal fly (`canFly`, boolean)
+  - how many legs does the enimal have (`numberOfLegs`, number)
+  - does the animal have fur (`hasFur`, boolean)
+- Add the info above to the `toString()` method of the `Pet` class.
+- Make tests for `equals()` и `hashcode()`:  `equals()` should return `true/false`, handle all cases according to the `equals` contract; 
 
 #### Literature:
-- [Inheritance, polymorphism, encapsulation](https://www.quora.com/What-is-the-difference-between-inheritance-encapsulation-and-polymorphism)
-- [Abstract classes](https://idratherbewriting.com/java-abstract-methods/)
-- [Java 8 interfaces](https://beginnersbook.com/2017/10/java-8-interface-changes-default-method-and-static-method/)
+- [Finalize()](https://www.baeldung.com/java-finalize)
+- [enum](https://www.w3schools.com/java/java_enums.asp)
+- [Java Enum Tutorial with examples](https://beginnersbook.com/2014/09/java-enum-examples/)
+- [Unit testing using JUnit](https://www.vogella.com/tutorials/JUnit/article.html)
+- [Настройка JUnit с помощью IntelliJ IDEA](https://stackoverflow.com/questions/19330832/setting-up-junit-with-intellij-idea)
