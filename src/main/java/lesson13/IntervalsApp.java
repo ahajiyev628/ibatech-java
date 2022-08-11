@@ -28,7 +28,7 @@ import java.util.function.Consumer;
  */
 public class IntervalsApp {
 
-  public void count0(List<Interval> data) {
+  public void count0(Iterable<Interval> data) {
     HashSet<Integer> unique = new HashSet<>(); // TreeSet
     data.forEach(x -> { unique.add(x.low); unique.add(x.hi); });
     ArrayList<Integer> points = new ArrayList<>(unique);
@@ -107,6 +107,7 @@ public class IntervalsApp {
 
     List<Result> result2 = app.count2(data);
     result2.forEach(r -> System.out.printf("sub: %s => %d\n", r.interval, r.count));
+    System.out.println(result2);
   }
 
 }
