@@ -1,8 +1,8 @@
 package lesson6;
 
-class Pizza {
-  String name;
-  Integer size;
+public class Pizza {
+  public String name;
+  public Integer size;
 
   public Pizza(String n, Integer s) {
     this.name = n;
