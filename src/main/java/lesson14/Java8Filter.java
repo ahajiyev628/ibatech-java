@@ -55,17 +55,24 @@ public class Java8Filter {
         .map(x -> x + 30)
         .map(x -> new Pizza("Margarita", x))
         .filter(p -> p.size > 31)
+//        .parallel()
         .map(p -> p.name)
         .distinct()
         .map(n -> n.toUpperCase())
         .collect(Collectors.toList());
 
-    List<Integer> randoms = Stream.generate(() -> Math.random())
-        .map(x -> (int) (x * 10 + 10))
-        .limit(10)
-        .collect(Collectors.toList());
+    Map<Boolean, List<Integer>> collect5 = Stream.generate(() -> Math.random())
+        .map(x -> (int) (x * 100))
+        .limit(30)
+        .collect(Collectors.partitioningBy(x -> x < 0));
 
-    System.out.println(randoms);
+    Map<Integer, List<Integer>> collect = Stream.generate(() -> Math.random())
+        .map(x -> (int) (x * 100))
+        .limit(30)
+        .collect(Collectors.groupingBy(x -> x / 10));
+
+
+    System.out.println(collect);
 
   }
 

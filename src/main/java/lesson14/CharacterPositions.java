@@ -1,8 +1,12 @@
 package lesson14;
 
 import lesson11.Pair;
+import lesson11.Triple;
 
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class CharacterPositions {
 
@@ -31,49 +35,42 @@ public class CharacterPositions {
    * v:1:<101>
    */
 
-  // PLEASE STOP USING string.replace(...) / .replaceAll(...)
-  public Map<Character, List<Integer>> doCount(String origin) {
-    HashMap<Character, List<Integer>> counter = new HashMap<>();
-    for (int i = 0; i < origin.length(); i++) {
-      Character c = Character.toLowerCase(origin.charAt(i));
-      if (Character.isLetter(c)) {
-        List<Integer> positions = counter.getOrDefault(c, new ArrayList<>());
-        positions.add(i + 1); // I'm human, not a computer :)
-        counter.put(c, positions);
-      }
-    }
-    return counter;
+  public static void main0(String[] args) {
+    String line = "Hello, my dear friend, please keep learning, I'll guarantee you'll reach the moment you understand everything";
+    List<String> collect = line.chars()
+        .mapToObj(x -> "" + (char) x)
+        .collect(Collectors.toList());
+
+    System.out.println(collect);
   }
 
-  public static List<Pair<Character, List<Integer>>> mapToList(Map<Character, List<Integer>> data) {
-    List<Pair<Character, List<Integer>>> list = new ArrayList<>();
-    data.forEach((ch, poss) -> {
-      Pair<Character, List<Integer>> pair = Pair.of(ch, poss);
-      list.add(pair);
-    });
-    return list;
+  public static void main1(String[] args) {
+    String line = "Hello, my dear friend, please keep learning, I'll guarantee you'll reach the moment you understand everything";
+    List<Integer> collect = IntStream.range(0, line.length())
+        .boxed() // int -> Integer
+        .collect(Collectors.toList());
+    System.out.println(collect);
   }
 
   public static void main(String[] args) {
-    CharacterPositions app = new CharacterPositions();
     String line = "Hello, my dear friend, please keep learning, I'll guarantee you'll reach the moment you understand everything";
-    Map<Character, List<Integer>> outcome = app.doCount(line);
-//    outcome.forEach((ch, list) -> System.out.printf("%s:%d:%s\n", ch, list.size(), list));
-    List<Pair<Character, List<Integer>>> list = mapToList(outcome);
-    list.forEach(pair -> System.out.printf("%s:%d:%s\n", pair.a, pair.b.size(), pair.b));
+    Stream<Triple<Character, Integer, List<Integer>>> grouped = IntStream.range(0, line.length())
+        .mapToObj(idx -> Pair.of(line.charAt(idx), idx))
+        .filter(p -> Character.isLetter(p.a))
+        .map(p -> Pair.of(Character.toLowerCase(p.a), p.b))
+        .collect(Collectors.groupingBy(p -> p.a))
+        .entrySet()
+        .stream()
+        .map(e ->
+            Pair.of(
+                e.getKey(),
+                e.getValue().stream().map(p -> p.b).collect(Collectors.toList())
+            )
+        )
+        .sorted(Comparator.comparingInt(x -> x.b.size()))
+        .map(p -> Triple.of(p.a, p.b.size(), p.b));
 
-    Comparator<Pair<Character, List<Integer>>> cmp1 = new Comparator<>() {
-      @Override
-      public int compare(Pair<Character, List<Integer>> o1, Pair<Character, List<Integer>> o2) {
-        return o2.b.size() - o1.b.size();
-      }
-    };
-
-    Comparator<Pair<Character, List<Integer>>> cmp2 = Comparator.comparingInt(p -> p.b.size());
-    Comparator<List<Integer>> listComparator = Comparator.comparingInt(l -> l.size());
-
-    list.sort(cmp2);
-    list.forEach(pair -> System.out.printf("%s:%d:%s\n", pair.a, pair.b.size(), pair.b));
+    grouped.forEach(p -> System.out.printf("%s -> %s\n", p.a, p.b));
   }
 
 
