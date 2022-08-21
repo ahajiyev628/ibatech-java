@@ -4,10 +4,9 @@ import java.util.Arrays;
 import java.util.Objects;
 
 public class Pizza {
-  final int size;
-
-  final String name;
-  final String[] extras;
+  public final int size;
+  public final String name;
+  public final String[] extras;
   //... more fields
 
   // without 'public' it's accessible only in lesson9
