@@ -24,6 +24,4 @@ public class FlatMapExamples2 {
     System.out.println(collected2);
   }
 
-
-
 }
