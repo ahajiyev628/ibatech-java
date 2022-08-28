@@ -1,6 +1,7 @@
 package lesson16.dao;
 
 import java.sql.Connection;
+import java.util.Optional;
 
 public class DaoPersonSQLDb implements DaoPerson {
 
@@ -16,7 +17,7 @@ public class DaoPersonSQLDb implements DaoPerson {
   }
 
   @Override
-  public Person load(int id) {
+  public Optional<Person> load(int id) {
     throw new IllegalArgumentException("not implemented");
   }
 

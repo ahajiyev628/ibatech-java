@@ -2,22 +2,8 @@ package lesson16.dao;
 
 import java.io.File;
 
-public class DaoPersonFile implements DaoPerson {
-
-  private final File file;
-
+public class DaoPersonFile extends DaoFile<Person> {
   public DaoPersonFile(File file) {
-    this.file = file;
+    super(file);
   }
-
-  @Override
-  public void save(Person p) {
-    throw new IllegalArgumentException("not implemented");
-  }
-
-  @Override
-  public Person load(int id) {
-    throw new IllegalArgumentException("not implemented");
-  }
-
 }

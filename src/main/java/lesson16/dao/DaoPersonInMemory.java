@@ -2,6 +2,7 @@ package lesson16.dao;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 public class DaoPersonInMemory implements DaoPerson {
 
@@ -9,12 +10,12 @@ public class DaoPersonInMemory implements DaoPerson {
 
   @Override
   public void save(Person p) {
-    throw new IllegalArgumentException("not implemented");
+    map.put(p.id, p);
   }
 
   @Override
-  public Person load(int id) {
-    throw new IllegalArgumentException("not implemented");
+  public Optional<Person> load(int id) {
+    return Optional.ofNullable(map.get(id));
   }
 
 }

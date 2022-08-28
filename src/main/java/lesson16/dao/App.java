@@ -1,25 +1,26 @@
 package lesson16.dao;
 
 import java.io.File;
+import java.util.Optional;
 
 public class App {
 
-  public static <A> void soSomething(DAO<A> dao) {
+  public static <A extends Identifiable> void soSomething(DAO<A> dao) {
     /// ....
   }
 
   public static void main(String[] args) {
-    Person p = new Person();
-    Pizza pz = new Pizza();
-    Student s = new Student();
+    Person p = new Person("Jim", 22);
+    Pizza pz = new Pizza(3, 60);
+    Student s = new Student(1, "Jim", "BE5");
 
     DAO<Person> daoPersonInmemory = new DaoPersonInMemory();
     daoPersonInmemory.save(p);
-    Person p1 = daoPersonInmemory.load(123);
+    Optional<Person> p1 = daoPersonInmemory.load(123);
 
     DAO<Person> daoPersonFile = new DaoPersonFile(new File("persons.bin"));
     daoPersonFile.save(p);
-    Person p2 = daoPersonFile.load(123);
+    Optional<Person> p2 = daoPersonFile.load(123);
 
     soSomething(daoPersonInmemory);
     soSomething(daoPersonFile);

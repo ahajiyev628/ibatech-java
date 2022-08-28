@@ -1,4 +1,4 @@
-package lesson17;
+package lesson17.textfile;
 
 import java.io.BufferedReader;
 import java.io.File;
