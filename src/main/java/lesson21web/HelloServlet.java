@@ -1,5 +1,8 @@
 package lesson21web;
 
+import lesson16.dao.DAO;
+import lesson16.dao.Pizza;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -10,9 +13,16 @@ import java.util.Map;
 
 public class HelloServlet extends HttpServlet {
 
+  private final DAO<Pizza> dp;
+
+  public HelloServlet(DAO<Pizza> dp) {
+    this.dp = dp;
+  }
+
   /* http://localhost:8080/hello?x=5&y=7&z=3&z=13&z=15 */
   @Override
   protected void doGet(HttpServletRequest rq, HttpServletResponse rs) throws ServletException, IOException {
+//    dp.load(1)
     String wholeQueryString = rq.getQueryString();
 //    rq.getPart("a");
 //    rq.getCookies();
