@@ -9,6 +9,8 @@ public class ServerApp {
     Server server = new Server(8080);
 
     ServletContextHandler handler = new ServletContextHandler();
+    handler.addServlet(new ServletHolder(new FormCheckBoxServlet()), "/form_checkbox");
+    handler.addServlet(new ServletHolder(new FormServlet()), "/form");
     handler.addServlet(new ServletHolder(new ShowTextFileServlet()), "/showtextfile");
     handler.addServlet(new ServletHolder(new ShowDynamicTextFileServlet1()), "/dynamic1");
     handler.addServlet(new ServletHolder(new ShowDynamicTextFileServlet2()), "/dynamic2");
