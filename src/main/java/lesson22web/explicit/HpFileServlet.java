@@ -1,4 +1,4 @@
-package lesson22web;
+package lesson22web.explicit;
 
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
@@ -9,12 +9,12 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-public class IbmFileServlet extends HttpServlet {
+public class HpFileServlet extends HttpServlet {
 
 // http://localhost:8080/hp.jpg
   @Override
   protected void doGet(HttpServletRequest rq, HttpServletResponse rs) throws ServletException, IOException {
-    String fileName = getClass().getClassLoader().getResource("ibm.png").getFile();
+    String fileName = getClass().getClassLoader().getResource("a/hp.jpg").getFile();
 
     try (ServletOutputStream os = rs.getOutputStream()) {
       Files.copy(Path.of(fileName), os);
