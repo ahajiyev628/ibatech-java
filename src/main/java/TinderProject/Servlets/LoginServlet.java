@@ -39,7 +39,8 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest rq, HttpServletResponse rs) throws ServletException, IOException {
         String email = rq.getParameter("email");
         String password = rq.getParameter("password");
-        User u = new User(UUID.randomUUID().toString(), email, password);
+        String img = rq.getParameter("img");
+        User u = new User(UUID.randomUUID().toString(), email, password, img);
         ud.put(u);
         rs.sendRedirect("/peoplelist");
     }

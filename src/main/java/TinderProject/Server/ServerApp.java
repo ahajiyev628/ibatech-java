@@ -1,11 +1,11 @@
 package TinderProject.Server;
 
+import TinderProject.PeopleListTest;
 import TinderProject.Servlets.ChatServlet;
 import TinderProject.Servlets.LikePageServlet;
 import TinderProject.Servlets.LoginServlet;
 import TinderProject.Servlets.PeopleListServlet;
 import TinderProject.ShowTextFile;
-import lesson22web.StaticFileServlet;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
@@ -17,11 +17,12 @@ public class ServerApp {
         handler.addServlet(new ServletHolder(new ChatServlet()), "/chat");
         handler.addServlet(new ServletHolder(new LikePageServlet()), "/likepage");
         handler.addServlet(new ServletHolder(new LoginServlet()), "/login");
-        handler.addServlet(new ServletHolder(new PeopleListServlet()), "/peoplelist");
+        //handler.addServlet(new ServletHolder(new PeopleListServlet()), "/peoplelist");
 
         handler.addServlet(new ServletHolder(new ShowTextFile()), "/showtext");
+        handler.addServlet(new ServletHolder(new PeopleListTest()), "/peoplelistt");
         handler.addServlet(new ServletHolder(new ShowTextFile()), "/users");
-        handler.addServlet(new ServletHolder(new StaticFileServlet()), "/*");
+      //  handler.addServlet(new ServletHolder(new StaticFileServlet()), "/*");
 
 
         server.setHandler(handler);
