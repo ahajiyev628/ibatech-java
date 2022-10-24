@@ -1,4 +1,4 @@
-package TinderProject;
+package TinderProject.Servlets;
 
 import TinderProject.DAO.UsersDAO;
 import TinderProject.Objects.User;

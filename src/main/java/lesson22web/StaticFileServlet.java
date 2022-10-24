@@ -1,3 +1,4 @@
+/*
 package lesson22web;
 
 import javax.servlet.ServletException;
@@ -22,3 +23,4 @@ public class StaticFileServlet extends HttpServlet {
   }
 
 }
+*/

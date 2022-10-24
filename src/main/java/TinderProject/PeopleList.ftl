@@ -55,11 +55,6 @@
                                             <input type="submit" value="Send Message" class="btn-btn-outline-success">
 
                                         </form>
-
-
-
-
-
                                     </td>
                                 </tr>
 
