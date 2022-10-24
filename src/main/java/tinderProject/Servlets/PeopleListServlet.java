@@ -44,11 +44,11 @@ public class PeopleListServlet extends HttpServlet {
     @SneakyThrows
     @Override
     protected void doGet(HttpServletRequest rq, HttpServletResponse rs) throws ServletException, IOException {
-        var usersCon = config("TestStepProject.ftl",rs);
+        var usersCon = config("templates/TestStepProject.ftl",rs);
     }
     @Override
     protected void doPost(HttpServletRequest rq, HttpServletResponse rs) throws ServletException, IOException {
-        var usersCon = config("TestStepProject.ftl",rs);
+        var usersCon = config("templates/TestStepProject.ftl",rs);
         int ind = indx-1;
         likedUsers.add(usersCon.get(ind));
         Likes liked = new Likes(likedUsers.get(ind).getId(), likedUsers.get(ind).getUsername(),

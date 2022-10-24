@@ -41,7 +41,7 @@ public class LikedPeopleListTest extends HttpServlet {
                 data.put("name", likedUsers.get(i).getUsername());
                 data.put("photo", likedUsers.get(i).getImg());
                 data.put("id", likedUsers.get(i).getId());
-                conf.getTemplate("formLiked.ftl").process(data, w);
+                conf.getTemplate("templates/formLiked.ftl").process(data, w);
             }
         } catch (TemplateException e) {
             throw new RuntimeException(e);

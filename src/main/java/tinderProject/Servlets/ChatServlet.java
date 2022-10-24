@@ -41,7 +41,7 @@ public class ChatServlet extends HttpServlet {
         String msg = rq.getParameter("msg");
         String send = rq.getParameter("send");
         if(send.length()>0) {
-            Message ms = new Message("", receiver, msg);
+            Message ms = new Message("", "receiver", "msg");
             md.put(ms);
         }
         ArrayList<Message> messages = md.getAll();
