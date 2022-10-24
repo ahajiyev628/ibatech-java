@@ -1,0 +1,12 @@
+
+####
+POST http://localhost:8080/peoplelistt
+#Content-Type: application/x-www-form-urlencoded
+#Custom-Heqder: my-super-key
+#
+#user=Jim&password=123
+
+####
+GET http://localhost:8080/peoplelistt
+####
+GET http://localhost:8081/liked
