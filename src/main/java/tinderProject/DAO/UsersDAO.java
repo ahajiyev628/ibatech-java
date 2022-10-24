@@ -103,5 +103,6 @@ public class UsersDAO implements dao<User> {
         PreparedStatement st = conn.prepareStatement("delete from abb_tech.users where id = ?");
         st.setString(1, id);
         st.execute();
+        conn.commit();
     }
 }

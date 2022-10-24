@@ -20,17 +20,15 @@ public class MessagesDAO implements dao<Message> {
     }
     @SneakyThrows
     @Override
-    public List<Message> getAll() {
+    public ArrayList<Message> getAll() {
         PreparedStatement stmt = conn.prepareStatement("select * from abb_tech.messages");
         ResultSet resultSet = stmt.executeQuery();
         ArrayList<Message> messages = new ArrayList<>();
         while (resultSet.next()) {
             Message m = new Message(
                     resultSet.getString("sender_id"),
-                    resultSet.getString("sender"),
                     resultSet.getString("receiver"),
-                    resultSet.getString("message_body"),
-                    resultSet.getDate("message_date")
+                    resultSet.getString("message_body")
             );
             messages.add(m);
         }
@@ -57,10 +55,8 @@ public class MessagesDAO implements dao<Message> {
         if(resultSet.next()) {
             return Optional.of(new Message(
                     resultSet.getString("sender_id"),
-                    resultSet.getString("sender"),
                     resultSet.getString("receiver"),
-                    resultSet.getString("message_body"),
-                    resultSet.getDate("message_date")));
+                    resultSet.getString("message_body")));
         }
         else return Optional.empty();
     }
@@ -68,13 +64,12 @@ public class MessagesDAO implements dao<Message> {
     @SneakyThrows
     @Override
     public void put(Message msg) {
-        PreparedStatement st = conn.prepareStatement("insert into abb_tech.messages (sender_id, sender, receiver, message_body, message_date) values (?,?,?,?,?)");
+        PreparedStatement st = conn.prepareStatement("insert into abb_tech.messages (sender_id, receiver, message_body) values (?,?,?)");
         st.setString(1, msg.getSender_id());
-        st.setString(2, msg.getSender());
-        st.setString(3, msg.getReceiver());
-        st.setString(4, msg.getMessage_body());
-        st.setDate(5, (Date) msg.getMessage_date());
+        st.setString(2, msg.getReceiver());
+        st.setString(3, msg.getMessage_body());
         st.execute();
+        conn.commit();
     }
     @SneakyThrows
     @Override
@@ -82,5 +77,6 @@ public class MessagesDAO implements dao<Message> {
         PreparedStatement st = conn.prepareStatement("delete from abb_tech.messages where id = ?");
         st.setString(1, id);
         st.execute();
+        conn.commit();
     }
 }
