@@ -6,7 +6,6 @@ import org.eclipse.jetty.servlet.ServletHolder;
 import tinderProject.Service.Counter;
 import tinderProject.Servlets.LikedPeopleListTest;
 import tinderProject.Servlets.ChatServlet;
-import tinderProject.LikePageServlet;
 import tinderProject.Servlets.LoginServlet;
 import tinderProject.Servlets.PeopleListServlet;
 
@@ -20,7 +19,6 @@ public class ServerApp {
         ServletContextHandler handler = new ServletContextHandler();
 
         handler.addServlet(new ServletHolder(new ChatServlet()), "/chat");
-        handler.addServlet(new ServletHolder(new LikePageServlet()), "/likepage");
         handler.addServlet(new ServletHolder(new LoginServlet()), "/login");
         handler.addServlet(new ServletHolder(new PeopleListServlet(counter)), "/peoplelistt");
         handler.addServlet(new ServletHolder(new LikedPeopleListTest()), "/liked");
