@@ -13,6 +13,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
@@ -32,10 +33,34 @@
                                 <tr>
                                     <td width="10">
                                         <div class="avatar-img">
-                                                <p>${user.id}</p>
+                                            <img class="img-circle" width="400" height="300" src="${user.img}" />
                                         </div>
-                                    </td>
 
+                                    </td>
+                                    <td class="align-middle">
+                                        ${user.username}
+                                        <#--                                       Herbert Hoover-->
+                                    </td>
+                                    <td class="align-middle">
+                                        Builder Sales Agent
+                                    </td>
+                                    <td  class="align-middle">
+                                        Last Login:  0 <br><small class="text-muted">5 days ago</small>
+                                        <#--                                       ${user.getDate()}-->
+                                    </td>
+                                    <td>
+
+                                        <form method="get" >
+                                            <input type="hidden" name="user_idd" value="${user.id}"/>
+                                            <input type="submit" value="Send Message" class="btn-btn-outline-success">
+
+                                        </form>
+
+
+
+
+
+                                    </td>
                                 </tr>
 
                             </#list>
