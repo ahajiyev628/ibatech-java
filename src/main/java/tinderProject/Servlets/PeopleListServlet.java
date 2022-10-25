@@ -71,15 +71,15 @@ public class PeopleListServlet extends HttpServlet {
             data.put("photo", users.get(ind).getImg());
             if (ud.getCount() == newUsers.size()){
                 rs.sendRedirect("http://localhost:8080/liked");
-           w.println("ssss");
+                w.println("ssss");
             }
             else {
                 newUsers.add(users.get(ind));
-               conf.getTemplate(fileName).process(data, w);
+                conf.getTemplate(fileName).process(data, w);
             }
-    } catch (TemplateException e) {
+        } catch (TemplateException e) {
             throw new RuntimeException(e);
         }
         return users;
     }
-    }
+}

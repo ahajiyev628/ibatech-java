@@ -69,15 +69,15 @@ public class ChatServlet extends HttpServlet {
             throw new RuntimeException(e);
         }
     }
-        @Override
-        protected void doPost (HttpServletRequest rq, HttpServletResponse rs) throws ServletException, IOException {
-            String receiver = rq.getParameter("message");
-            String msg = rq.getParameter("msg");
-            String send = rq.getParameter("send");
-            Message ms = new Message("", receiver, msg);
-            if (send.equals("sent")) {
-                md.put(ms);
-                rs.sendRedirect("/messages?message="+receiver);
-            }
+    @Override
+    protected void doPost (HttpServletRequest rq, HttpServletResponse rs) throws ServletException, IOException {
+        String receiver = rq.getParameter("message");
+        String msg = rq.getParameter("msg");
+        String send = rq.getParameter("send");
+        Message ms = new Message("", receiver, msg);
+        if (send.equals("sent")) {
+            md.put(ms);
+            rs.sendRedirect("/messages?message="+receiver);
         }
     }
+}

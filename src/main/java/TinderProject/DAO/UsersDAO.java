@@ -2,7 +2,6 @@ package TinderProject.DAO;
 
 import TinderProject.Database.ConnectionDB;
 import TinderProject.Objects.User;
-import lesson27web.HistoryItem;
 import lombok.SneakyThrows;
 
 import java.sql.*;

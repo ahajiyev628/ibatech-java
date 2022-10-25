@@ -1,2 +1,0 @@
-WiFi network name: ibatech.az_2G / ibatech.az_5G
-WiFi password: iloveibatech
