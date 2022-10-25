@@ -28,7 +28,7 @@ public class MessagesDAO implements dao<Message> {
             Message m = new Message(
                     resultSet.getString("sender_id"),
                     resultSet.getString("receiver"),
-                    resultSet.getString("message_body")
+                    resultSet.getString("message")
             );
             messages.add(m);
         }
@@ -56,20 +56,18 @@ public class MessagesDAO implements dao<Message> {
             return Optional.of(new Message(
                     resultSet.getString("sender_id"),
                     resultSet.getString("receiver"),
-                    resultSet.getString("message_body")));
+                    resultSet.getString("message")));
         }
         else return Optional.empty();
     }
-
     @SneakyThrows
     @Override
     public void put(Message msg) {
-        PreparedStatement st = conn.prepareStatement("insert into abb_tech.messages (sender_id, receiver, message_body) values (?,?,?)");
+        PreparedStatement st = conn.prepareStatement("insert into abb_tech.messages (sender_id, receiver, message) values (?,?,?);commit;");
         st.setString(1, msg.getSender_id());
         st.setString(2, msg.getReceiver());
-        st.setString(3, msg.getMessage_body());
+        st.setString(3, msg.getMessage());
         st.execute();
-        conn.commit();
     }
     @SneakyThrows
     @Override

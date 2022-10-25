@@ -8,12 +8,15 @@ import java.util.Date;
 public class Message {
     String sender_id;
     String receiver;
-    String message_body;
-    Date message_date;
+    String message;
 
-    public Message(String sender_id, String receiver, String message_body) {
+    public Message(String sender_id, String receiver, String message) {
         this.sender_id = sender_id;
         this.receiver = receiver;
-        this.message_body = message_body;
+        this.message = message;
+    }
+
+    public Message() {
+
     }
 }
