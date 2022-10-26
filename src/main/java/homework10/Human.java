@@ -8,7 +8,7 @@ import java.util.Date;
 public class Human {
     private String name;
     private String surname;
-    private long birth_date;
+    private long birthDate;
     //1322018752992l
     // private String birthDate;
     private int iq;
@@ -22,10 +22,10 @@ public class Human {
     public Human(){}
 
 
-    public Human(String name, String surname, long birth_date, int iq) throws ParseException {
+    public Human(String name, String surname, long birthDate, int iq) throws ParseException {
         this.name = name;
         this.surname = surname;
-        this.birth_date = birth_date;
+        this.birthDate = birthDate;
         this.iq = iq;
     }
 
@@ -73,12 +73,12 @@ public class Human {
         this.surname = surname;
     }
 
-    public long getBirth_date() {
-        return birth_date;
+    public long getBirthDate() {
+        return birthDate;
     }
 
-    public void setBirth_date(long birth_date) {
-        this.birth_date = birth_date;
+    public void setBirthDate(long birthDate) {
+        this.birthDate = birthDate;
     }
 
     public void setIq(int iq) {
@@ -108,7 +108,7 @@ public class Human {
         } else {
             sd = new SimpleDateFormat("dd/MM/yyyy");
         }
-        cal.setTimeInMillis(birth_date);
+        cal.setTimeInMillis(birthDate);
         cal.add(Calendar.DATE,0);
         Date date = cal.getTime();
         String dt = sd.format(date);
