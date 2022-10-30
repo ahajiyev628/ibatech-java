@@ -15,14 +15,16 @@ public class Main {
         System.out.println(fs.getAllFamilies().toString());
         System.out.println("");
 
-        Human h2 = new Human("Allahverdi2","Hajiyev2", 1322018752992l, 100);
-        fs.adoptChild(fs.getFamilyById(0), h2);
+        fs.adoptChild(fs.getFamilyById(0), new Human("Allahverdi2","Hajiyev2", "23/11/2011", 100));
+//        fs.getFamilyById(0).getChildren().get(0).setAdopted(true);
+        fs.getFamilyById(0).getChildren().get(0).setBirthDate("24/11/2011");
         System.out.println("after a child is adopted: ");
         System.out.println(fs.getAllFamilies().toString());
         System.out.println("");
 
         System.out.println("Another child:");
-        Human h1 = new Human("Allahverdi1","Hajiyev1", 1322018752992l, 10);
+        Human h1 = new Human("Allahverdi1","Hajiyev1", "11/23/2011", 10);
+        System.out.println(h1.isAdopted());
         System.out.println(h1.toString());
     }
 }

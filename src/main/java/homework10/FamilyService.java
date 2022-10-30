@@ -66,16 +66,9 @@ public class FamilyService {
         }
     }
     public Family adoptChild(Family f, Human child) {
-        child.isAdopted = true;
-        Calendar cal = Calendar.getInstance();
-        long birth = child.getBirthDate();
-        SimpleDateFormat sd = new SimpleDateFormat("dd/MM/yyyy");
-        cal.setTimeInMillis(birth);
-        cal.add(Calendar.DATE,0);
-        Date date = cal.getTime();
-
-        String dt = sd.format(date);
+        child.setAdopted(true);
         f.addChild(child);
+        System.out.println(child.isAdopted());
         return f;
     }
 

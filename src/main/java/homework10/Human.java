@@ -2,6 +2,7 @@ package homework10;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -18,14 +19,28 @@ public class Human {
 
     private Family family;
     Calendar cal = Calendar.getInstance();
+    private boolean isAdopted;
 
     public Human(){}
 
+    public long dateFormatter(String birthDate) throws ParseException {
+        SimpleDateFormat sd;
+        if(isAdopted()) {
+            sd = new SimpleDateFormat("dd/MM/yyyy");
+        } else {
+            sd = new SimpleDateFormat("MM/dd/yyyy");
+        }
 
-    public Human(String name, String surname, long birthDate, int iq) throws ParseException {
+        Date date = sd.parse(birthDate);
+        long epoch = date.getTime();
+        return epoch;
+    }
+
+
+    public Human(String name, String surname, String birthDate, int iq) throws ParseException {
         this.name = name;
         this.surname = surname;
-        this.birthDate = birthDate;
+        this.birthDate=dateFormatter(birthDate);
         this.iq = iq;
     }
 
@@ -73,12 +88,31 @@ public class Human {
         this.surname = surname;
     }
 
-    public long getBirthDate() {
-        return birthDate;
+    public boolean isAdopted() {
+        return isAdopted;
     }
 
-    public void setBirthDate(long birthDate) {
-        this.birthDate = birthDate;
+    public void setAdopted(boolean adopted) {
+        isAdopted = adopted;
+    }
+
+    public String getBirthDate() {
+        SimpleDateFormat sd;
+        if(isAdopted()) {
+            sd = new SimpleDateFormat("dd/MM/yyyy");
+        } else {
+            sd = new SimpleDateFormat("MM/dd/yyyy");
+        }
+        cal.setTimeInMillis(birthDate);
+        cal.add(Calendar.DATE,0);
+        Date date = cal.getTime();
+        String dt = sd.format(date);
+
+        return dt;
+    }
+
+    public void setBirthDate(String birthDate) throws ParseException {
+        this.birthDate=dateFormatter(birthDate);
     }
 
     public void setIq(int iq) {
@@ -98,24 +132,20 @@ public class Human {
         this.surname = surname;
     }
 
-    public boolean isAdopted;
-
     @Override
     public String toString() {
         SimpleDateFormat sd;
-        if(isAdopted) {
-            sd = new SimpleDateFormat("MM/dd/yyyy");
-        } else {
+        if(isAdopted()) {
             sd = new SimpleDateFormat("dd/MM/yyyy");
+        } else {
+            sd = new SimpleDateFormat("MM/dd/yyyy");
         }
-        cal.setTimeInMillis(birthDate);
-        cal.add(Calendar.DATE,0);
-        Date date = cal.getTime();
-        String dt = sd.format(date);
+        String date = sd.format(birthDate);
+
         return "Human{" +
                     "name='" + name + '\'' +
                     ", surname='" + surname + '\'' +
-                    ", birthdate=" + dt +
+                    ", birthdate=" + date +
                     ", iq=" + iq +
                     '}';
     }
